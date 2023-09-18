@@ -99,3 +99,24 @@ void insert(int *list, int size) {
         }
     }
 }
+
+void quicksort(int *list, int left, int right) {
+    if(left < right) {
+        int pivotIndex = partition(list, left, right);
+        quicksort(list, left, pivotIndex - 1);
+        quicksort(list, pivotIndex + 1, right);
+    }
+}
+
+int partition(int *list, int left, int right) {
+    int pivot = list[right]; 
+    int i = left - 1; 
+    for(int j = left; j <= right - 1; j++) {
+        if(list[j] < pivot) {
+            i++;
+            swap(list[i], list[j]);
+        }
+    }
+    swap(list[i + 1], list[right]);
+    return i + 1;
+}
