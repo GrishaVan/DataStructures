@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "basic.h"
 #include "sorting.h"
 
@@ -90,9 +91,8 @@ void insert(int *list, int size) {
         for(int j = i - 1; j >= 0; j--) {
             /* Need to make sure we keep track of the element we keep swapping */
             int same = i;
-            /* While the previosy element is smaller keep swapping */
-            while(list[same] < list[same - 1]){
-                cout << list[same] << " is smaller than " << list[same - 1] << "\n";
+            /* While the previosy element is smaller and there is a previous element keep swapping */
+            while(list[same] < list[same - 1] && same - 1 >= 0){
                 swap(list[same - 1], list[same]);
                 same--;
             }         

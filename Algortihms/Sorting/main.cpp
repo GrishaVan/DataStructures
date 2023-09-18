@@ -6,9 +6,9 @@ using namespace std;
 
 int main() {
 
-    int array[] = {5, 5, 3, 10, 12, 1, 3};
-    insert(array, 7);
-    printList(array, 7);
+    int array[] = {5, 7, 2, 3, 4, 12, 10, 11, 1};
+    quicksort(array, 0, 9);
+    printList(array, 9);
 
     return 0;
 }
