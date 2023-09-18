@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "basic.h"
 #include "sorting.h"
 
@@ -119,4 +118,61 @@ int partition(int *list, int left, int right) {
     }
     swap(list[i + 1], list[right]);
     return i + 1;
+}
+
+void mergesort(int *list, int left, int right) {
+    if(left >= right)
+        return;
+
+    int mid = left + (right - left) / 2;
+    mergesort(list, left, mid);
+    mergesort(list, mid + 1, right);
+    merge(list, left, mid, right);
+}
+
+void merge(int *list, int left, int mid, int right){
+    
+    int sizeLeft = mid - left + 1;
+    int sizeRight = right - mid;
+
+    int *leftSide = new int[sizeLeft];
+    int *rightSide = new int[sizeRight];
+
+    for(int i = 0; i < sizeLeft; i++) {
+        leftSide[i] = list[left + i];
+    }
+    for(int i = 0; i < sizeRight; i++) {
+        rightSide[i] = list[mid + 1 + i];
+    }
+
+    int leftIndex = 0;
+    int rightIndex = 0;
+    int arrayIndex = left;
+
+    while(leftIndex < sizeLeft && rightIndex < sizeRight) {
+        if(leftSide[leftIndex] < rightSide[rightIndex]) {
+            list[arrayIndex] = leftSide[leftIndex];
+            leftIndex++;
+        }else{
+            list[arrayIndex] = rightSide[rightIndex];
+            rightIndex++;
+        }
+        arrayIndex++;
+    }
+
+    while(leftIndex < sizeLeft) {
+        list[arrayIndex] = leftSide[leftIndex];
+        leftIndex++;
+        arrayIndex++;
+    }
+
+
+    while(rightIndex < sizeRight) {
+        list[arrayIndex] = rightSide[rightIndex];
+        rightIndex++;
+        arrayIndex++;
+    }
+
+    delete[] leftSide;
+    delete[] rightSide;
 }
