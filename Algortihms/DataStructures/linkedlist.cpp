@@ -151,3 +151,16 @@ void LinkedList::removeValue(int value) {
     }
     this->size--;
 }
+
+void LinkedList::reverseList() {
+    Node *reference = this->head;
+    for(int i = 0; i < this->size; i++) {
+        Node *rev = new Node(this->tail->getValue());
+        Node *rest = reference->getNext();
+        this->removeLast();  
+        reference->setNext(rev);
+        rev->setNext(rest);
+        size++;
+        reference = rev;
+    }
+}

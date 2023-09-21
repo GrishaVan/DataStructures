@@ -9,10 +9,9 @@ int main() {
     LinkedList::Node *node = new LinkedList::Node(5);
     
     list->insertNode(node);
-    list->printList();
-    //list->insertValue(4);
-    //list->insertValue(3);
-    list->removeValue(5);
+    list->insertValue(4);
+    list->insertValue(3);
+    list->reverseList();
     list->printList();
 
     delete list;

@@ -34,6 +34,7 @@ public:
     void insertNode(Node *node);
     void removeLast();
     void removeValue(int value);
+    void reverseList();
 };
 
 #endif
